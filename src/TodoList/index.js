@@ -1,17 +1,31 @@
 import React from "react";
 
 export default class TodoList extends React.Component {
-  render() {
-    const { todos } = this.props;
+    constructor(props) {
+        super(props);
 
-    return (
-      <div>
-        <ul>
-          {todos.map(todoItem => (
-            <li>{todoItem}</li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
+        this.state = {};
+    }
+    setTodoValue(event) {
+        const value = event.target.value;
+
+        this.setState({value});
+    }
+
+    render() {
+        const { todos, onAddItem} = this.props;
+        const { value } = this.state;
+
+        return (
+            <div>
+                <ul>
+                    {todos.map(todoItem => (
+                        <li>{todoItem}</li>
+                    ))}
+                </ul>
+                <input onChange={event => this.setTodoValue(event)}/>
+                <button onClick={() => onAddItem(value)}>Add</button>
+            </div>
+        )
+    }
 }

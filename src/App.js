@@ -12,13 +12,19 @@ export default class App extends React.Component {
     }
   }
 
+  addItem(value) {
+    const previousList = this.state.todos;
+
+    this.setState({todos: previousList.concat(value)});
+  }
+
   render() {
     const {todos} = this.state;
 
     return (
       <div className="App">
         <h1>TodoList</h1>
-        <TodoList todos={todos} />
+        <TodoList todos={todos} onAddItem={value => this.addItem(value)}/>
       </div>
     );
   }
