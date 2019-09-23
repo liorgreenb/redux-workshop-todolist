@@ -24,7 +24,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1>TodoList</h1>
-        <TodoList todos={todos} onAddItem={value => this.addItem(value)}/>
+        <TodoList/>
       </div>
     );
   }
